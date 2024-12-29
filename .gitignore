@@ -5,3 +5,5 @@ __pycache__/
 # Ignore l'environnement virtuel
 venv/
 .env/
+
+.vscode/
