@@ -10,5 +10,8 @@ class Url_generator_algo:
         base62:str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         return ''.join(random.choices(base62, k=self.length))
     
+    def get_length(self)->int:
+        return self.length
+    
 
 
