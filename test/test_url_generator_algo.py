@@ -1,5 +1,5 @@
 import pytest
-from src.url_generator_algo import Url_generator_algo
+from src.utils.url_generator_algo import Url_generator_algo
 
 def test_length_shortUrl():
     url_gen:str = Url_generator_algo(6)

@@ -1,10 +1,12 @@
 from pydantic import BaseModel
 
-class UrlBase(BaseModel):
-    id: str
-    api: int
-    username: str
-    email: str
-    short_url: str
-    long_url: str
+class Create_Base(BaseModel):
+    """ Model for user """
+    username:str
+    original_url:str
+
+class UrlShortBase(BaseModel):
+    """ Model for short url """
+    short_url:str
+
 
