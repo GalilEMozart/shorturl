@@ -20,3 +20,24 @@ Each data (url, short url, long url, date ) will take 100 bytes, so we will need
 - Estimation memory (caching)
 Pareto principle : 80% of the traffic will be on 20% of the urls
 So to store the 20% of the urls data per day we will need 20% * 40 * 24 * 3600 = 7 millions * 100 bytes = 700 MB, almost 1 GB
+
+
+## Features
+- Test unitaire
+- Test d'integration
+- Asynchonicite
+- Load balancer
+- Documentation
+- Logging 
+- Analytics informations
+- Test latency
+- BDD failure and Scalability
+- Time expiration
+- Cache 
+- Other algorithm to generate short url
+
+
+# resources
+[fist one](https://www.codekarle.com/system-design/TinyUrl-system-design.html?source=post_page-----106f30f23a82--------------------------------)
+[second one](https://medium.com/@sandeep4.verma/system-design-scalable-url-shortener-service-like-tinyurl-106f30f23a82)
+[Last one](https://www.hellointerview.com/learn/system-design/problem-breakdowns/bitly)
