@@ -38,6 +38,6 @@ So to store the 20% of the urls data per day we will need 20% * 40 * 24 * 3600 =
 
 
 # resources
-[fist one](https://www.codekarle.com/system-design/TinyUrl-system-design.html?source=post_page-----106f30f23a82--------------------------------)
-[second one](https://medium.com/@sandeep4.verma/system-design-scalable-url-shortener-service-like-tinyurl-106f30f23a82)
-[Last one](https://www.hellointerview.com/learn/system-design/problem-breakdowns/bitly)
+- [fist one](https://www.codekarle.com/system-design/TinyUrl-system-design.html?source=post_page-----106f30f23a82--------------------------------)
+- [second one](https://medium.com/@sandeep4.verma/system-design-scalable-url-shortener-service-like-tinyurl-106f30f23a82)
+- [Last one](https://www.hellointerview.com/learn/system-design/problem-breakdowns/bitly)
