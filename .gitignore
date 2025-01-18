@@ -7,3 +7,5 @@ venv/
 .env/
 
 .vscode/
+
+my_env/

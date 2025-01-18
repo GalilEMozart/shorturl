@@ -23,9 +23,9 @@ So to store the 20% of the urls data per day we will need 20% * 40 * 24 * 3600 =
 
 
 ## Features
-- Test unitaire
-- Test d'integration
-- Asynchonicite
+- [] Test unitaire
+- [] Test d'integration (CI/CD)
+- [x] Asynchonicite on api call 
 - Load balancer
 - Documentation
 - Logging 
@@ -33,9 +33,13 @@ So to store the 20% of the urls data per day we will need 20% * 40 * 24 * 3600 =
 - Test latency
 - BDD failure and Scalability
 - Time expiration
-- Cache 
+- [x] Cache (Redis ?)
 - Other algorithm to generate short url
-
+- Containerization (Docker) /Orchestration (Kubernetes)
+- Deploy on AWS
+- Monitoring
+- Add alembic (Pour le changement de schemas de la base des donnees)
+- [] Add pre-commit Flask8 pep8
 
 # resources
 - [fist one](https://www.codekarle.com/system-design/TinyUrl-system-design.html?source=post_page-----106f30f23a82--------------------------------)
