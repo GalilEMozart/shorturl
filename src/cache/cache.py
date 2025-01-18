@@ -87,5 +87,3 @@ class CacheMiddleware(BaseHTTPMiddleware):
         # Crée une clé unique basée sur le chemin et les paramètres de requête
         raw_key = f"{path}?{query_params}"
         return hashlib.sha256(raw_key.encode()).hexdigest()
-
-
