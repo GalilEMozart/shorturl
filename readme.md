@@ -25,10 +25,10 @@ So to store the 20% of the urls data per day we will need 20% * 40 * 24 * 3600 =
 ## Features
 - [] Test unitaire
 - [] Test d'integration (CI/CD)
-- [x] Asynchonicite on api call 
+- [x] Asynchonicite on api call
 - Load balancer
 - Documentation
-- Logging 
+- Logging
 - Analytics informations
 - Test latency
 - BDD failure and Scalability

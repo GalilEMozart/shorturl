@@ -1,6 +1,7 @@
-import time
-import functools
 import asyncio
+import functools
+import time
+
 
 def measure_time(func):
     @functools.wraps(func)
@@ -9,7 +10,10 @@ def measure_time(func):
         result = await func(*args, **kwargs)
         end_time = time.perf_counter()
         execution_time = end_time - start_time
-        print(f"Function '{func.__name__}' executed in {execution_time:.4f} seconds")
+        print(
+            f"Function '{func.__name__}' executed in \
+                {execution_time:.4f} seconds"
+        )
         return result
 
     @functools.wraps(func)
@@ -18,7 +22,10 @@ def measure_time(func):
         result = func(*args, **kwargs)
         end_time = time.perf_counter()
         execution_time = end_time - start_time
-        print(f"Function '{func.__name__}' executed in {execution_time:.4f} seconds")
+        print(
+            f"Function '{func.__name__}' executed in \
+                {execution_time:.4f} seconds"
+        )
         return result
 
     # Choose the right wrapper depending on the type of the function
