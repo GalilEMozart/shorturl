@@ -1,7 +1,8 @@
 # System Design : URL SHORT
 
 Create a complete API that will take a long url and return a short url.
-That system take a long url as this one (https://www.quora.com/Can-you-recommend-any-websites-with-unusually-long-URLs-What-is-the-purpose-of-creating-such-long-URLs) and produce a short url that can be easly remembered or insert into message on social medial. LinkedIn use a short url system when you insert a url into post. The short url redirect to the original url, the long one.
+That system take a long url like this one (https://www.quora.com/Can-you-recommend-any-websites-with-unusually-long-URLs-What-is-the-purpose-of-creating-such-long-URLs) and produce a short url (https://short_url.com/ywk2v4) that can be easly remembered or insert into social medial post.\
+LinkedIn use a short url system when you insert a url into post. The short url redirect to the original url, the long one.
 
 ## Basic requirement
 
@@ -46,6 +47,6 @@ So to store the 20% of the urls data per day we will need 20% * 40 * 24 * 3600 =
 - [x] Add pre-commit Flask8 pep8 isort
 
 # resources
-- [fist one](https://www.codekarle.com/system-design/TinyUrl-system-design.html?source=post_page-----106f30f23a82--------------------------------)
-- [second one](https://medium.com/@sandeep4.verma/system-design-scalable-url-shortener-service-like-tinyurl-106f30f23a82)
+- [Fist ressource](https://www.codekarle.com/system-design/TinyUrl-system-design.html?source=post_page-----106f30f23a82--------------------------------)
+- [Second ressource](https://medium.com/@sandeep4.verma/system-design-scalable-url-shortener-service-like-tinyurl-106f30f23a82)
 - [Last one](https://www.hellointerview.com/learn/system-design/problem-breakdowns/bitly)
