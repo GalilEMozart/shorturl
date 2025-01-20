@@ -25,12 +25,24 @@ services:
       POSTGRES_PASSWORD: password
     ports:
       - 5432:5432
+    networks:
+      - redis_network
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
+
+  api:
+    build:
+      context: .
+    container_name: fastapi-container
+    ports:
+      - 8080:8080
+    networks:
+      - redis_network
+
 
 volumes:
   redis_data:
