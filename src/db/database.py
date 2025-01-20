@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 # SQLALCHEMY_DATABASE_URL = "postgresql://postgres@localhost/postgres"
 SQLALCHEMY_DATABASE_URL = (
-    "postgresql+asyncpg://postgres:password@localhost/postgres"
+    "postgresql+asyncpg://postgres:password@db/postgres"
 )
 
 

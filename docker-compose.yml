@@ -12,6 +12,7 @@ services:
 
   db:
     image: postgres
+    container_name: postgres-container
     restart: always
     # set shared memory limit when using docker-compose
     shm_size: 128mb
@@ -30,6 +31,7 @@ services:
 
   adminer:
     image: adminer
+    container_name: adminer-container
     restart: always
     ports:
       - 8080:8080
@@ -37,9 +39,12 @@ services:
   api:
     build:
       context: .
+    depends_on:
+      - db
+      - redis
     container_name: fastapi-container
     ports:
-      - 8080:8080
+      - 8081:8080
     networks:
       - redis_network
 
