@@ -2,7 +2,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from src.config import settings
+from src.config import logger, settings
 
 SQLALCHEMY_DATABASE_URL = (
     f"postgresql+asyncpg://{settings.postgres_user}:"
@@ -12,6 +12,7 @@ SQLALCHEMY_DATABASE_URL = (
 )
 
 engine = create_async_engine(SQLALCHEMY_DATABASE_URL, echo=True)
+logger.info(f"Database connection established: {settings.postgres_host}")
 
 SessionLocal = sessionmaker(
     bind=engine, class_=AsyncSession, expire_on_commit=False

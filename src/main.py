@@ -2,12 +2,14 @@ from fastapi import FastAPI
 
 from src.api.routes import create_short_url, main_route, url_redirection
 from src.cache.cache import CacheMiddleware
+from src.config import logger
 from src.db.database import Base, engine
 
 
 # initialize the database
 async def lifespan(app: FastAPI):
 
+    logger.info("Creating database tables")
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
@@ -15,6 +17,7 @@ async def lifespan(app: FastAPI):
 
     # Arrêt de l'application : nettoyage si nécessaire
     await engine.dispose()
+    logger.info("Database connection closed")
 
 
 app = FastAPI(lifespan=lifespan)

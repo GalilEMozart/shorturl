@@ -5,7 +5,7 @@ from redis.asyncio import Redis
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import Response, StreamingResponse
 
-from src.config import settings
+from src.config import logger, settings
 from src.utils.timer import measure_time
 
 
@@ -21,10 +21,12 @@ class CacheMiddleware(BaseHTTPMiddleware):
         )
 
     async def log(self, message):
-        print(message)
+        logger.info(message)
 
     @measure_time
     async def dispatch(self, request, call_next):
+
+        await self.log("middleware start")
 
         includ_paths = ["/get_url"]
 
@@ -59,15 +61,12 @@ class CacheMiddleware(BaseHTTPMiddleware):
         # next request in the middleware stack
         response = await call_next(request)
 
-        await self.log("always printed")
-
-        # Vérifier que la réponse est de type `StreamingResponse` ou similaire
+        # process the streaming response
         if (
             isinstance(response, (StreamingResponse,))
             or type(response).__name__ == "_StreamingResponse"
         ):
             content = b""
-            await self.log("Here collection of chunks")
             async for chunk in response.body_iterator:
                 content += chunk
             response = Response(
@@ -76,7 +75,6 @@ class CacheMiddleware(BaseHTTPMiddleware):
                 headers=dict(response.headers),
             )
 
-        # Vérifier le statut de la réponse avant de mettre en cache
         try:
             if response.status_code == 200:
                 await self.redis_client.set(

@@ -52,8 +52,5 @@ services:
     networks:
       - redis_network
 
-volumes:
-  redis_data:
-
 networks:
   redis_network:

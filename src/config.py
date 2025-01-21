@@ -1,3 +1,5 @@
+import logging
+
 from pydantic_settings import BaseSettings
 
 
@@ -21,3 +23,25 @@ class Config(BaseSettings):
 
 
 settings = Config()
+
+
+logger = logging.getLogger("my_logger")
+logger.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter(
+    "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+
+# Handler for file
+file_handler = logging.FileHandler("logs/app.log")
+file_handler.setLevel(logging.DEBUG)
+file_handler.setFormatter(formatter)
+
+# Handler fro sdtout
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.DEBUG)
+console_handler.setFormatter(formatter)
+
+# add handlers to logger
+logger.addHandler(file_handler)
+logger.addHandler(console_handler)

@@ -5,6 +5,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
+RUN mkdir /app/logs
 COPY src /app/src/
 
 EXPOSE 8080
