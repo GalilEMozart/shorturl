@@ -26,17 +26,17 @@ class CacheMiddleware(BaseHTTPMiddleware):
     @measure_time
     async def dispatch(self, request, call_next):
 
-        await self.log("Entered dispatch")
+        includ_paths = ["/get_url"]
 
-        if not self.cache_enabled:  # or request.method != "GET"
-            # Passer directement à la requête suivante
-            # si le cache est désactivé ou si la méthode n'est pas GET
+        if not self.cache_enabled or request.url.path not in includ_paths:
+
             await self.log("Cache disabled")
             return await call_next(request)
 
         # Generate a cache key based on the request path and query parameters
 
         body = await request.body()
+
         body_data = json.loads(body.decode("utf-8"))
         url_path, query_params = request.url.path, body_data
         cache_key = self._generate_cache_key(url_path, query_params)
@@ -88,6 +88,9 @@ class CacheMiddleware(BaseHTTPMiddleware):
         return response
 
     def _generate_cache_key(self, path: str, query_params: dict) -> str:
-        # Crée une clé unique basée sur le chemin et les paramètres de requête
+        """
+        Generate unique cache key based on
+        the request path and query parameters
+        """
         raw_key = f"{path}?{query_params}"
         return hashlib.sha256(raw_key.encode()).hexdigest()

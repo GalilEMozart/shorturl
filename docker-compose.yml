@@ -3,29 +3,22 @@ version: "3.9"
 services:
   redis:
     build:
-      context: ./src/cache  # Indique où se trouve le Dockerfile
+      context: ./src/cache
     container_name: redis-container
     ports:
-      - "6379:6379"  # Expose le port Redis
+      - 6379
     networks:
-      - redis_network  # Réseau personnalisé pour isoler Redis
+      - redis_network
 
   db:
     image: postgres
     container_name: postgres-container
     restart: always
-    # set shared memory limit when using docker-compose
     shm_size: 128mb
-    # or set shared memory limit when deploy via swarm stack
-    #volumes:
-    #  - type: tmpfs
-    #    target: /dev/shm
-    #    tmpfs:
-    #      size: 134217728 # 128*2^20 bytes = 128Mb
     environment:
       POSTGRES_PASSWORD: password
     ports:
-      - 5432:5432
+      - 5432
     networks:
       - redis_network
 
@@ -34,20 +27,30 @@ services:
     container_name: adminer-container
     restart: always
     ports:
-      - 8080:8080
+      - 8080
 
-  api:
+  fastapi:
     build:
       context: .
     depends_on:
       - db
       - redis
-    container_name: fastapi-container
+    #container_name: fastapi-container-1
     ports:
-      - 8081:8080
+      - 8080
     networks:
       - redis_network
 
+  nginx:
+    build:
+      context: ./load_balancer
+    container_name: nginx
+    ports:
+      - 80:80
+    depends_on:
+      - fastapi
+    networks:
+      - redis_network
 
 volumes:
   redis_data:

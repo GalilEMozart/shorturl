@@ -31,7 +31,7 @@ So to store the 20% of the urls data per day we will need 20% * 40 * 24 * 3600 =
 ## TODO
 - [ ] Unit and Integration test (CI/CD)
 - [x] Asynchonicite on api call
-- [ ] Load balancer
+- [x] Load balancer
 - [ ] Documentation
 - [ ] Logging
 - [x] Analytics informations
@@ -39,8 +39,9 @@ So to store the 20% of the urls data per day we will need 20% * 40 * 24 * 3600 =
 - [ ] BDD failure and Scalability
 - [ ] Time expiration
 - [x] Cache (Redis ?)
-- [ ] Other algorithm to generate short url
-- [ ] Containerization (Docker) /Orchestration (Kubernetes)
+- [ ] Other algorithms to generate short url
+- [x] Containerization (Docker)
+- [ ] Orchestration (Kubernetes ?)
 - [ ] Deploy on AWS
 - [ ] Monitoring
 - [ ] Add alembic (Pour le changement de schemas de la base des donnees)
