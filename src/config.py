@@ -1,5 +1,5 @@
-import logging
-
+from aiologger.handlers.files import AsyncFileHandler
+from aiologger.loggers.json import JsonLogger  # Logger asynchrone JSON
 from pydantic_settings import BaseSettings
 
 
@@ -24,7 +24,7 @@ class Config(BaseSettings):
 
 settings = Config()
 
-
+"""
 logger = logging.getLogger("my_logger")
 logger.setLevel(logging.DEBUG)
 
@@ -37,7 +37,7 @@ file_handler = logging.FileHandler("logs/app.log")
 file_handler.setLevel(logging.DEBUG)
 file_handler.setFormatter(formatter)
 
-# Handler fro sdtout
+# Handler for sdtout
 console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.DEBUG)
 console_handler.setFormatter(formatter)
@@ -45,3 +45,9 @@ console_handler.setFormatter(formatter)
 # add handlers to logger
 logger.addHandler(file_handler)
 logger.addHandler(console_handler)
+"""
+logger = JsonLogger.with_default_handlers(
+    name="async_logger", level="INFO", extra={"service": "CacheMiddleware"}
+)
+file_handler = AsyncFileHandler(filename="logs/cache_middleware.log")
+logger.add_handler(file_handler)

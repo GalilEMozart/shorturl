@@ -8,7 +8,7 @@ import httpx
 
 async def get_url(num_request):
 
-    short_url_list = ["TPQops", "Y8goOF"]
+    short_url_list = ["TPQops"]
 
     url = "http://127.0.0.1:80/get_url"
     json = {"short_url": random.choice(short_url_list)}
