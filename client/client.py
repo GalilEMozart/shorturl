@@ -1,5 +1,6 @@
 import argparse
 import asyncio
+import random
 from time import perf_counter
 
 import httpx
@@ -7,8 +8,10 @@ import httpx
 
 async def get_url(num_request):
 
+    short_url_list = ["TPQops", "Y8goOF"]
+
     url = "http://127.0.0.1:80/get_url"
-    json = {"short_url": "PIcFaE"}
+    json = {"short_url": random.choice(short_url_list)}
 
     async with httpx.AsyncClient() as client:
         response = await client.post(url, json=json)
@@ -22,7 +25,7 @@ async def main(n: int):
     start = perf_counter()
 
     tasks = [get_url(i) for i in range(n)]
-    await asyncio.gather(*tasks,return_exceptions=True)
+    await asyncio.gather(*tasks, return_exceptions=True)
 
     finish = perf_counter()
     print(f"Time elapsed: {finish - start:.2f} seconds")

@@ -1,9 +1,17 @@
+import logging
+
 from fastapi import FastAPI
 
 from src.api.routes import create_short_url, main_route, url_redirection
 from src.cache.cache import CacheMiddleware
 from src.config import logger
 from src.db.database import Base, engine
+
+# Désactiver les logs de FastAPI et SQLAlchemy
+logging.getLogger("uvicorn").setLevel(logging.WARNING)
+logging.getLogger("uvicorn.access").setLevel(logging.WARNING)
+# logging.getLogger("sqlalchemy.engine").setLevel(logging.WARNING)
+logging.getLogger("sqlalchemy.engine.Engine").disabled = True
 
 
 # initialize the database
